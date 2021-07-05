@@ -1,6 +1,8 @@
 <template>
     <div>
         <textarea v-model="msg" style="width:50%; height:100px;"></textarea>
+        <br>
+        <button @click="getMsg">메세지 가져오기</button>
     </div>
 </template>
 <script>
@@ -17,6 +19,11 @@ export default {
     created() {},
     mounted() {},
     unmounted() {},
-    methods: {}
+    methods: { 
+        getMsg(){
+            console.log(this.msg);
+
+        }
+    }
 }
 </script>

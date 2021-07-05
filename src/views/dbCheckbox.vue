@@ -5,6 +5,8 @@
         <label for=""><input type="checkbox" :value=cityArr[2] v-model="cities">부천</label>
         <br>
         <div>선택한 지역: {{cities}}</div>
+        <br>
+        <button @click="getValue">가져오기</button>
     </div>
 </template>
 <script>
@@ -26,7 +28,12 @@ export default {
     created() {},
     mounted() {},
     unmounted() {},
-    methods: {}
+    methods: {
+        getValue() {
+        console.log(this.cityList[0]['v']);
+
+        }
+    }
 }
 </script>
 <style scoped>

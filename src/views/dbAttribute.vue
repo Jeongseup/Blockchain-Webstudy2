@@ -3,7 +3,8 @@
 
         <h2>V3.VUE.ORG</h2>
         <img :src="imgSrc" alt="">
-        <img v-bind:src="imgSrc" alt="">
+        <img v-bind:src="imgSrc" alt=""> 
+        <!-- // visibility="hidden" -->
     </div>
 </template>
 <script>
