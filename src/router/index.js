@@ -1,7 +1,4 @@
-import {
-  createRouter,
-  createWebHistory
-} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../views/Home.vue";
 import NestedComponent from "../views/NestedComponent.vue";
@@ -10,7 +7,8 @@ import NestedComponent3 from "../views/NestedComponent3.vue";
 import NestedComponent4 from "../views/NestedComponent4.vue";
 import NestedComponent5 from "../views/NestedComponent5.vue";
 
-const routes = [{
+const routes = [
+  {
     path: "/",
     name: "Home",
     component: Home,
@@ -20,31 +18,26 @@ const routes = [{
     path: "/nested",
     name: "NestedComponent",
     component: NestedComponent,
-
   },
   {
     path: "/nested2",
     name: "NestedComponent2",
     component: NestedComponent2,
-
   },
   {
     path: "/nested3",
     name: "NestedComponent3",
     component: NestedComponent3,
-
   },
   {
     path: "/nested4",
     name: "NestedComponent4",
     component: NestedComponent4,
-
   },
   {
     path: "/nested5",
     name: "NestedComponent5",
     component: NestedComponent5,
-
   },
 
   {
@@ -54,10 +47,8 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
-
-
 ];
 
 const router = createRouter({

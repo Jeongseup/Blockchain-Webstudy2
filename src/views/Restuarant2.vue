@@ -9,7 +9,7 @@
         :key="menu.menuId"
         v-for="menu in menus"
       >
-        {{ menu.menuName }}({{ menu.price}}원)
+        {{ menu.menuName }}({{ menu.price }}원)
       </button>
     </div>
   </header>
@@ -30,11 +30,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr :key="menu.menuId" v-for="menu in menus.filter(m => m.isSelected)">
+          <tr
+            :key="menu.menuId"
+            v-for="menu in menus.filter((m) => m.isSelected)"
+          >
             <td>{{ menu.menuName }}</td>
             <td>{{ menu.price }}</td>
             <td>
-              <input type="number" v-model="menu.qty">
+              <input type="number" v-model="menu.qty" />
             </td>
             <td>{{ menu.amount * menu.price }}</td>
           </tr>
@@ -88,336 +91,336 @@
 </template>
 <script>
 export default {
-  name: '',
+  name: "",
   components: {},
   data() {
     return {
-      selCoupon: '',
+      selCoupon: "",
       totalAmount: 0,
       finalAmount: 0,
 
       oCards: {},
       selectCards: {
-        CREDIT: '',
-        TELECOM: '',
-        OKCASHBAG: '',
-        POINT: ''
+        CREDIT: "",
+        TELECOM: "",
+        OKCASHBAG: "",
+        POINT: "",
       },
 
       cardTypes: [
         {
-          cardType: 'CREDIT',
-          title: '신용카드'
+          cardType: "CREDIT",
+          title: "신용카드",
         },
         {
-          cardType: 'TELECOM',
-          title: '통신사'
+          cardType: "TELECOM",
+          title: "통신사",
         },
         {
-          cardType: 'OKCASHBAG',
-          title: 'OK캐시백'
+          cardType: "OKCASHBAG",
+          title: "OK캐시백",
         },
         {
-          cardType: 'POINT',
-          title: '포인트결제'
-        }
+          cardType: "POINT",
+          title: "포인트결제",
+        },
       ],
 
       menus: [
         {
           menuId: 1,
-          menuName: '무제한 샐러드바',
-          price: 25000
+          menuName: "무제한 샐러드바",
+          price: 25000,
         },
         {
           menuId: 2,
-          menuName: '안심 스테이크(150g)',
-          price: 35500
+          menuName: "안심 스테이크(150g)",
+          price: 35500,
         },
         {
           menuId: 3,
-          menuName: '립아이 스테이크(220g)',
-          price: 22500
+          menuName: "립아이 스테이크(220g)",
+          price: 22500,
         },
         {
           menuId: 4,
-          menuName: '채끝 등심 스테이크(210g)',
-          price: 30500
+          menuName: "채끝 등심 스테이크(210g)",
+          price: 30500,
         },
         {
           menuId: 5,
-          menuName: '자몽에이드',
-          price: 6500
+          menuName: "자몽에이드",
+          price: 6500,
         },
         {
           menuId: 6,
-          menuName: '애플망고에이드',
-          price: 6500
+          menuName: "애플망고에이드",
+          price: 6500,
         },
         {
           menuId: 7,
-          menuName: '생맥주',
-          price: 400
-        }
+          menuName: "생맥주",
+          price: 400,
+        },
       ],
 
       creditCards: [
         {
           cardId: 1,
-          cardType: 'CREDIT',
-          cardName: 'CJ ONE 삼성카드',
+          cardType: "CREDIT",
+          cardName: "CJ ONE 삼성카드",
           discount: 30,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 2,
-          cardType: 'CREDIT',
-          cardName: 'CJ ONE 신한카드',
+          cardType: "CREDIT",
+          cardName: "CJ ONE 신한카드",
           discount: 30,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 3,
-          cardType: 'CREDIT',
-          cardName: 'The CJ 카드',
+          cardType: "CREDIT",
+          cardName: "The CJ 카드",
           discount: 22,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 4,
-          cardType: 'CREDIT',
-          cardName: '삼성 6 V4카드',
+          cardType: "CREDIT",
+          cardName: "삼성 6 V4카드",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 5,
-          cardType: 'CREDIT',
-          cardName: '신한 Lady카드',
+          cardType: "CREDIT",
+          cardName: "신한 Lady카드",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 6,
-          cardType: 'CREDIT',
-          cardName: '삼성 SFC',
+          cardType: "CREDIT",
+          cardName: "삼성 SFC",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 7,
-          cardType: 'CREDIT',
-          cardName: '삼성 S클라스',
+          cardType: "CREDIT",
+          cardName: "삼성 S클라스",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 8,
-          cardType: 'CREDIT',
-          cardName: '하나 Yes OK Saver',
+          cardType: "CREDIT",
+          cardName: "하나 Yes OK Saver",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 9,
-          cardType: 'CREDIT',
-          cardName: '홈플러스 하나줄리엣카드',
+          cardType: "CREDIT",
+          cardName: "홈플러스 하나줄리엣카드",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 10,
-          cardType: 'CREDIT',
-          cardName: '하나 줄리엣카드 & Yes 4u shopping',
+          cardType: "CREDIT",
+          cardName: "하나 줄리엣카드 & Yes 4u shopping",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 11,
-          cardType: 'CREDIT',
-          cardName: 'KB Star',
+          cardType: "CREDIT",
+          cardName: "KB Star",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 12,
-          cardType: 'CREDIT',
-          cardName: '이마트 KB카드',
+          cardType: "CREDIT",
+          cardName: "이마트 KB카드",
           discount: 15,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 13,
-          cardType: 'TELECOM',
-          cardName: 'KT 멤버십 일반 할인',
+          cardType: "TELECOM",
+          cardName: "KT 멤버십 일반 할인",
           discount: 5,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 14,
-          cardType: 'TELECOM',
-          cardName: 'KT 멤버십 VIP 할인',
+          cardType: "TELECOM",
+          cardName: "KT 멤버십 VIP 할인",
           discount: 15,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 15,
-          cardType: 'TELECOM',
-          cardName: 'T 멤버십 실버 할인',
+          cardType: "TELECOM",
+          cardName: "T 멤버십 실버 할인",
           discount: 5,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 16,
-          cardType: 'TELECOM',
-          cardName: 'T 멤버십 VIP/골드 할인',
+          cardType: "TELECOM",
+          cardName: "T 멤버십 VIP/골드 할인",
           discount: 15,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 17,
-          cardType: 'OKCASHBAG',
-          cardName: 'OK캐시백',
+          cardType: "OKCASHBAG",
+          cardName: "OK캐시백",
           discount: 30,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 18,
-          cardType: 'POINT',
-          cardName: 'BC Top 포인트',
+          cardType: "POINT",
+          cardName: "BC Top 포인트",
           discount: 100,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 19,
-          cardType: 'POINT',
-          cardName: '기아멤버스 카드',
+          cardType: "POINT",
+          cardName: "기아멤버스 카드",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 20,
-          cardType: 'POINT',
-          cardName: '삼성카드 포인트',
+          cardType: "POINT",
+          cardName: "삼성카드 포인트",
           discount: 100,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 21,
-          cardType: 'POINT',
-          cardName: '현대카드 M',
+          cardType: "POINT",
+          cardName: "현대카드 M",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 22,
-          cardType: 'POINT',
-          cardName: '신한 Hi-Point 카드',
+          cardType: "POINT",
+          cardName: "신한 Hi-Point 카드",
           discount: 20,
-          discountType: '%'
+          discountType: "%",
         },
         {
           cardId: 23,
-          cardType: 'POINT',
-          cardName: '블루멤버스 카드',
+          cardType: "POINT",
+          cardName: "블루멤버스 카드",
           discount: 20,
-          discountType: '%'
-        }
+          discountType: "%",
+        },
       ],
 
       coupons: [
         {
           couponId: 1,
-          title: '5% 할인쿠폰(중복할인 가능)',
+          title: "5% 할인쿠폰(중복할인 가능)",
           discount: 5,
           doubleDiscount: true,
-          discountType: '%'
+          discountType: "%",
         },
         {
           couponId: 2,
-          title: '10% 할인쿠폰(중복할인 가능)',
+          title: "10% 할인쿠폰(중복할인 가능)",
           discount: 10,
           doubleDiscount: true,
-          discountType: '%'
+          discountType: "%",
         },
         {
           couponId: 3,
-          title: '15% 할인쿠폰(중복할인 가능)',
+          title: "15% 할인쿠폰(중복할인 가능)",
           discount: 15,
           doubleDiscount: true,
-          discountType: '%'
+          discountType: "%",
         },
         {
           couponId: 4,
-          title: '5000 할인쿠폰(중복할인 가능)',
+          title: "5000 할인쿠폰(중복할인 가능)",
           discount: 5000,
           doubleDiscount: true,
-          discountType: ''
+          discountType: "",
         },
         {
           couponId: 5,
-          title: '10,000 할인쿠폰(중복할인 가능)',
+          title: "10,000 할인쿠폰(중복할인 가능)",
           discount: 10000,
           doubleDiscount: true,
-          discountType: ''
+          discountType: "",
         },
         {
           couponId: 6,
-          title: '20,000 할인쿠폰(중복할인 가능)',
+          title: "20,000 할인쿠폰(중복할인 가능)",
           discount: 20000,
           doubleDiscount: true,
-          discountType: ''
+          discountType: "",
         },
         {
           couponId: 7,
-          title: '5% 할인쿠폰(중복할인 불가능)',
+          title: "5% 할인쿠폰(중복할인 불가능)",
           discount: 5,
           doubleDiscount: false,
-          discountType: '%'
+          discountType: "%",
         },
         {
           couponId: 8,
-          title: '10% 할인쿠폰(중복할인 불가능)',
+          title: "10% 할인쿠폰(중복할인 불가능)",
           discount: 10,
           doubleDiscount: false,
-          discountType: '%'
+          discountType: "%",
         },
         {
           couponId: 9,
-          title: '15% 할인쿠폰(중복할인 불가능)',
+          title: "15% 할인쿠폰(중복할인 불가능)",
           discount: 15,
           doubleDiscount: false,
-          discountType: '%'
+          discountType: "%",
         },
         {
           couponId: 10,
-          title: '5000 할인쿠폰(중복할인 불가능)',
+          title: "5000 할인쿠폰(중복할인 불가능)",
           discount: 5000,
           doubleDiscount: false,
-          discountType: ''
+          discountType: "",
         },
         {
           couponId: 11,
-          title: '10,000 할인쿠폰(중복할인 불가능)',
+          title: "10,000 할인쿠폰(중복할인 불가능)",
           discount: 10000,
           doubleDiscount: false,
-          discountType: ''
+          discountType: "",
         },
         {
           couponId: 12,
-          title: '20,000 할인쿠폰(중복할인 불가능)',
+          title: "20,000 할인쿠폰(중복할인 불가능)",
           discount: 20000,
           doubleDiscount: false,
-          discountType: ''
-        }
-      ]
-    }
+          discountType: "",
+        },
+      ],
+    };
   },
   computed: {
     totalAmount() {
       return this.menus
-      .filter((m) => m.isSelected)
-      .reduce((t, o) => t + o.price * o.qty, 0);
+        .filter((m) => m.isSelected)
+        .reduce((t, o) => t + o.price * o.qty, 0);
 
       // var sum = 0;
       // for (var menu of this.menus){
@@ -428,21 +431,21 @@ export default {
     },
   },
   setup() {},
-  
+
   created() {
-    this.menus.map(m => {
-     return {
-       menuId : m.menuId,
-       menuName: m.menuName,
-       price: m.price,
-       qty: 1,
-       isSelected: false
-     } 
-    })
+    this.menus.map((m) => {
+      return {
+        menuId: m.menuId,
+        menuName: m.menuName,
+        price: m.price,
+        qty: 1,
+        isSelected: false,
+      };
+    });
   },
   mounted() {
-    this.addMenuAmount()
-    this.makeObjectCards()
+    this.addMenuAmount();
+    this.makeObjectCards();
   },
   unmounted() {},
   methods: {
@@ -450,27 +453,27 @@ export default {
     // 초기화 mount 함수
     addMenuAmount() {
       for (var menu of this.menus) {
-        menu.amount = 0
+        menu.amount = 0;
       }
       // console.table(this.menus);
     },
 
     makeObjectCards() {
       // empty obejct
-      var oCards = {}
+      var oCards = {};
 
       for (var card of this.creditCards) {
         // 할인카드 종류가 oCard안에 define 되지 않았다면,
         if (!oCards[card.cardType]) {
           // obejct안에 []를 생성한다.
-          oCards[card.cardType] = []
+          oCards[card.cardType] = [];
         }
         // cardType의 종류에 해당되는 card를 빈 []안에 넣는다.
-        oCards[card.cardType].push(card)
+        oCards[card.cardType].push(card);
       }
 
       // => oCard라는 object 안에 cardType이란 key에 맞춰 데이터가 재배열됨.
-      this.oCards = oCards
+      this.oCards = oCards;
       // 확인
       // console.log(this.oCards);
       // console.log(this.oCards[])
@@ -481,20 +484,20 @@ export default {
     requestOrder(menuId) {
       // console.log('click');
 
-      var menu = this.menus.filter((m) => m.menuId == menuId)[0]
+      var menu = this.menus.filter((m) => m.menuId == menuId)[0];
       // console.log(menu)
-      menu.amount++
-      this.calTotalAmount()
+      menu.amount++;
+      this.calTotalAmount();
     },
 
     calTotalAmount() {
-      let totalAmount = 0
+      let totalAmount = 0;
       for (var menu of this.menus) {
-        var menuAmount = menu.price * menu.amount
-        totalAmount += menuAmount
+        var menuAmount = menu.price * menu.amount;
+        totalAmount += menuAmount;
       }
       // console.log(totalAmount);
-      this.totalAmount = totalAmount
+      this.totalAmount = totalAmount;
     },
 
     // getSelectCoupon () {
@@ -506,34 +509,34 @@ export default {
     // },
 
     calFinalAmount() {
-      let finalAmount = this.totalAmount
+      let finalAmount = this.totalAmount;
 
       if (this.totalAmount == 0) {
-        return alert('메뉴를 먼저 선택하세요.')
+        return alert("메뉴를 먼저 선택하세요.");
       }
 
       // 카드할인 array 만들기
       // console.log(Object.values(this.selectCards));
-      var cardsArr = Object.values(this.selectCards)
+      var cardsArr = Object.values(this.selectCards);
       // console.log(cardsArr);
 
       // 배열 안에 "" 지워주기
       for (var i in cardsArr) {
-        if (cardsArr[i] == '') {
-          cardsArr[i] = 0
+        if (cardsArr[i] == "") {
+          cardsArr[i] = 0;
         }
       }
 
       // console.log(cardsArr);
 
       var maxCardDist = cardsArr.reduce(function (a, b) {
-        return Math.max(a, b)
-      })
+        return Math.max(a, b);
+      });
 
       // console.log(maxCardDist);
-      var coupon = null
-      if (this.selCoupon != '') {
-        coupon = this.coupons.filter((c) => c.couponId == this.selCoupon)[0]
+      var coupon = null;
+      if (this.selCoupon != "") {
+        coupon = this.coupons.filter((c) => c.couponId == this.selCoupon)[0];
       }
       // var couponDistcount = this.coupons[this.selCoupon].discount;
       // console.log(coupon);
@@ -544,46 +547,46 @@ export default {
       if (coupon != null) {
         // 중복할인이 되는 경우
         if (coupon.doubleDiscount) {
-          console.log(coupon.doubleDiscount)
+          console.log(coupon.doubleDiscount);
           // 중복할인 % 인지
-          var couponDist = coupon.discount
-          if (coupon.discountType == '%') {
-            couponDist = Math.round(finalAmount * (coupon.discount / 100))
+          var couponDist = coupon.discount;
+          if (coupon.discountType == "%") {
+            couponDist = Math.round(finalAmount * (coupon.discount / 100));
           }
 
           // 중복할인  해주고
-          finalAmount -= couponDist
+          finalAmount -= couponDist;
           // 카드할인 있으면 해주고
           this.finalAmount =
-            finalAmount - Math.round(finalAmount * (maxCardDist / 100))
+            finalAmount - Math.round(finalAmount * (maxCardDist / 100));
 
           // 중복할인이 되지 않는 경우
         } else {
           // 쿠폰 할인량 계산
-          var couponDist = coupon.discount
-          if (coupon.discountType == '%') {
-            couponDist = Math.round(finalAmount * (coupon.discount / 100))
+          var couponDist = coupon.discount;
+          if (coupon.discountType == "%") {
+            couponDist = Math.round(finalAmount * (coupon.discount / 100));
           }
 
           // 카드할인량 계산
-          var cardDist = Math.round(finalAmount * (maxCardDist / 100))
+          var cardDist = Math.round(finalAmount * (maxCardDist / 100));
 
           // 최대할인으로 계산
           if (couponDist > cardDist) {
-            this.finalAmount = finalAmount - couponDist
+            this.finalAmount = finalAmount - couponDist;
           } else {
-            this.finalAmount = finalAmount - cardDist
+            this.finalAmount = finalAmount - cardDist;
           }
         }
         // 쿠폰이 없는 경우
       } else {
         // console.log("쿠폰이 없는 경우");
         this.finalAmount =
-          finalAmount - Math.round(finalAmount * (maxCardDist / 100))
+          finalAmount - Math.round(finalAmount * (maxCardDist / 100));
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style scoped>
 * {

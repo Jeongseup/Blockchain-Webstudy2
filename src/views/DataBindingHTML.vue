@@ -1,20 +1,20 @@
 <template>
-    <div>{{ htmlString }}</div>
-    <div v-html="htmlString"></div>
+  <div>{{ htmlString }}</div>
+  <div v-html="htmlString"></div>
 </template>
 <script>
 export default {
-    name: "",
-    components: {},
-    data() {
-        return {
-            htmlString: "<p style='color:red;'>빨간색 글자</p>",
-        };
-    },
-    setup() {},
-    created() {},
-    mounted() {},
-    unmounted() {},
-    methods: {}
-}
+  name: "",
+  components: {},
+  data() {
+    return {
+      htmlString: "<p style='color:red;'>빨간색 글자</p>",
+    };
+  },
+  setup() {},
+  created() {},
+  mounted() {},
+  unmounted() {},
+  methods: {},
+};
 </script>
