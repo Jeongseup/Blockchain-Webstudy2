@@ -1,45 +1,97 @@
 <template>
-    <div id="orderbar">
-        <h2>메뉴판</h2>
-        <button
-        @click="requestOrder(menu.menuId)"
-        :key="menu.menuId"
-        v-for="menu in menus"
-        >
-            {{ menu.menuName }}
-        </button>
-    </div>
-    <div id="menubar">
-        <h2>주문 현황</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>메뉴명</th>
-                    <th>가격</th>
-                    <th>수량</th>
-                    <th>합계</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr
-                :key="menu.menuId"
-                v-for="menu in menus"
-                >
-                    <td>{{ menu.menuName }}</td>
-                    <td>{{ menu.price }}</td>
-                    <td>{{ menu.amount }}</td>
-                    <td>{{ menu.amount * menu.price }}</td>
-                </tr>
-       
-            </tbody>
-                <tfoot>
+
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <h2>Choose Your Menu</h2>
+            <button class="btn-menu"
+            @click="requestOrder(menu.menuId)"
+            :key="menu.menuId"
+            v-for="menu in menus"
+            >
+                {{ menu.menuName }}
+            </button>
+        </div>
+    </header>
+
+        <!-- Navigation Bar -->
+    <nav class="navbar">
+    </nav>
+
+    <div class="row">
+        <main class="menubar">
+            <h2>Order Navigation</h2>
+            <table>
+                <thead>
                     <tr>
-                        <td colspan="3">총 합</td>
-                        <td>{{ totalAmount }}</td>
+                        <th>Menu</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
                     </tr>
-                </tfoot>
-        </table>
+                </thead>
+                <tbody>
+                    <tr
+                    :key="menu.menuId"
+                    v-for="menu in menus"
+                    >
+                        <td>{{ menu.menuName }}</td>
+                        <td>{{ menu.price }}</td>
+                        <td>{{ menu.amount }}</td>
+                        <td>{{ menu.amount * menu.price }}</td>
+                    </tr>
+          
+                </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">총 합</td>
+                            <td>{{ totalAmount }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">할인 후 금액</td>
+                            <td>{{ finalAmount }}</td>
+                        </tr>
+                    </tfoot>
+            </table>
+            </main>
+        <aside class="sidebar">
+            <h3>Discount Card List</h3>
+            <div 
+            class="card"
+            :key="type"
+            v-for="(cardType, type) in oCards"
+            >
+
+              <select class="sel-card" v-model="selectCards[type]" @change="calFinalAmount">
+                <option value="">{{ type }}카드를 선택하세요.</option>
+                <option
+                :value="card.cardId"
+                :key="card.cardId"
+                v-for="card in cardType"
+                >
+                  {{ card.cardName }}
+                </option>
+              </select>
+            </div>
+
+            <h3>Discount Coupon List</h3>
+                <select class="sel-coupon" v-model="selCoupon" @change="calFinalAmount">
+                  <option value="">쿠폰을 선택하세요.</option>
+                  <option 
+                  :value="coupon.couponId"
+                  :key="coupon.couponId"
+                  v-for="coupon in coupons"
+                  >
+                    {{ coupon.title }}
+                  </option>
+                </select>
+
+        </aside>
     </div>
+  
+
+    <!-- <button @click="calFinalAmount"><h2>할인조회</h2></button> -->
+  
 </template>
 <script>
 export default {
@@ -47,11 +99,22 @@ export default {
     components: {},
     data() {
         return {
+        selCoupon: "",
         totalAmount : 0,
+        finalAmount : 0,
+
+        oCards: {},
+        selectCards: {
+        CREDIT: "",
+        TELECOM : "",
+        OKCASHBAG: "",
+        POINT: "",
+        },
+
         cardTypes : [
         {
-        cardType: "CREDIT",
-        title: "신용카드"
+            cardType: "CREDIT",
+            title: "신용카드"
         },
         {
             cardType: "TELECOM",
@@ -357,16 +420,45 @@ export default {
     created() {},
     mounted() {
         this.addMenuAmount();
+        this.makeObjectCards();
     },
     unmounted() {},
     methods: {
+        
+        // =======================================================
+        // 초기화 mount 함수
         addMenuAmount () {
             for(var menu of this.menus){
                 menu.amount = 0;
             }
             // console.table(this.menus);
         },
+        
+        makeObjectCards () {
+          // empty obejct
+          var oCards = {};
 
+          for(var card of this.creditCards){
+                // 할인카드 종류가 oCard안에 define 되지 않았다면,
+                if(!oCards[card.cardType]) {
+                  // obejct안에 []를 생성한다.
+                  oCards[card.cardType] = [];
+                }
+                  // cardType의 종류에 해당되는 card를 빈 []안에 넣는다.
+                  oCards[card.cardType].push(card);
+                
+            }
+          
+          // => oCard라는 object 안에 cardType이란 key에 맞춰 데이터가 재배열됨.
+          this.oCards = oCards;
+          // 확인
+          // console.log(this.oCards);
+          // console.log(this.oCards[])
+        },
+        // =======================================================
+
+
+        // 
         requestOrder(menuId) {
             // console.log('click');
 
@@ -386,16 +478,170 @@ export default {
             }
             // console.log(totalAmount);
             this.totalAmount = totalAmount;
-        }
+        },
 
+        // getSelectCoupon () {
+        //   console.log(this.selCoupon);
+        // },
+
+        // getSelectCards () {
+        //   console.log(this.selectCards);
+        // },
+
+        calFinalAmount() {
+          let finalAmount = this.totalAmount;
+
+          if(this.totalAmount == 0){
+            return alert("메뉴를 먼저 선택하세요.");
+          }
+
+          
+          // 카드할인 array 만들기
+          // console.log(Object.values(this.selectCards));
+          var cardsArr = Object.values(this.selectCards);
+          // console.log(cardsArr);
+
+          // 배열 안에 "" 지워주기
+          for(var i in cardsArr){
+            if(cardsArr[i] == ""){
+              cardsArr[i] = 0;
+            }
+          }
+          
+          // console.log(cardsArr);
+          
+          var maxCardDist = cardsArr.reduce(function (a, b) {
+                return Math.max(a, b);
+          });
+
+          // console.log(maxCardDist);
+          var coupon = null;
+          if(this.selCoupon != ""){
+            coupon = this.coupons.filter(c => c.couponId == this.selCoupon)[0];
+          }
+          // var couponDistcount = this.coupons[this.selCoupon].discount;
+          // console.log(coupon);
+
+
+
+          // 이제 먼저 쿠폰이 있는지 없는지 부터 확인
+          // 쿠폰 확인 - 있으면 ? => 중복할인 되는지 / 없으면 => 카드할인 있는지?
+          // console.log(finalAmount);
+          if(coupon != null){
         
+            // 중복할인이 되는 경우
+            if(coupon.doubleDiscount){ 
+              console.log(coupon.doubleDiscount);     
+              // 중복할인 % 인지
+              var couponDist = coupon.discount;
+              if(coupon.discountType == "%"){
+                couponDist = Math.round(finalAmount * (coupon.discount / 100));          
+              }
+
+              // 중복할인  해주고
+              finalAmount -= couponDist; 
+              // 카드할인 있으면 해주고
+              this.finalAmount = finalAmount - Math.round(finalAmount *  (maxCardDist / 100));
+              
+            // 중복할인이 되지 않는 경우
+            } else {
+
+              // 쿠폰 할인량 계산
+              var couponDist = coupon.discount;
+              if(coupon.discountType == "%"){
+                couponDist = Math.round(finalAmount * (coupon.discount / 100));          
+              }
+
+              // 카드할인량 계산
+              var cardDist = Math.round(finalAmount *  (maxCardDist / 100));
+
+
+              // 최대할인으로 계산
+              if(couponDist > cardDist){
+                  this.finalAmount = finalAmount - couponDist;
+              }else {
+                  this.finalAmount = finalAmount - cardDist;
+              }
+                            
+            }
+          // 쿠폰이 없는 경우
+          } else {
+            // console.log("쿠폰이 없는 경우");
+            this.finalAmount = finalAmount - Math.round(finalAmount *  (maxCardDist / 100));
+          }
+        }
     }
 }
 </script>
 <style scoped>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #884200;
+    color: white;
+}
+
+/* Style the top navigation bar */
+.navbar {
+    display: flex;
+    height: 20px;
+    background-color: #333;
+    /* justify-content: center; */
+}
+
+/* Column container */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Sidebar/left column */
+.sidebar {
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* Main column */
+.menubar {
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+
+}
+
+.btn-menu{
+  width: 10em;
+  height: 5em;
+  margin: 5px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+
+.sel-card, .sel-coupon{
+  width: 20em;
+  height: 3em;
+  margin: 5px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
 table {
     width: 100%;
     margin-top: 30px;
+      font-weight: bold;
 }
 
 table, th, td{

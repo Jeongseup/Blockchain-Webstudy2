@@ -4,7 +4,7 @@ import {
 } from "vue-router";
 
 import Home from "../views/Home.vue";
-import dbList from "../views/restuarant.vue";
+import dbList from "../views/Restuarant.vue";
 
 const routes = [{
     path: "/",
