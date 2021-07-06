@@ -1,19 +1,24 @@
 <template>
     <div>
-        <table style="width: 100%">
+        <table width="100%">
             <thead>
                 <tr>
-                    <th :key="i" v-for="(title, i) in header">{{ title }}</th>
+                    <th :key="i" v-for="(head, i) in header">
+                        {{ head.title }}
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr :key="i" v-for="(data, i) in body">
-                    <td :key="j" v-for="(item, j) in data">{{ item }}</td>
+                <tr :key="i" v-for="(tr, i) in body">
+                    <td :key="j" v-for="(head, j) in header">
+                        {{ tr[head.key] }}
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </template>
+
 <script>
 export default {
     props: {
@@ -23,6 +28,7 @@ export default {
                 return [];
             },
         },
+
         body: {
             type: Array,
             default: function () {
@@ -32,6 +38,7 @@ export default {
     },
 };
 </script>
+
 <style scoped>
 table,
 th,
