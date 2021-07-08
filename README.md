@@ -1,4 +1,4 @@
-# my-vue2
+# Blockchain-Webstudy2
 
 ## Project setup
 ```
