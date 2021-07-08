@@ -1,29 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import KakaoLogin2 from '../views/KakaoLogin2.vue'
-import NaverLogin from '../views/NaverLogin.vue'
-import NaverLogin2 from '../views/NaverLogin2.vue'
 
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home
-    },
-    {
-        path: '/kakaologin2',
-        name: 'KakaoLogin2',
-        component: KakaoLogin2
-    },
-    {
-        path: '/naverlogin',
-        name: 'NaverLogin',
-        component: NaverLogin
-    },
-    {
-        path: '/naverlogin2',
-        name: 'NaverLogin2',
-        component: NaverLogin2
     },
     {
         path: '/about',
