@@ -1,12 +1,15 @@
-import { createApp } from "vue";
+import { createApp } from 'vue'
 
-import App from "./App.vue";
-import router from "./router"; // router가 ./router/index.js를 자동으로 찾아서 연결해줌
-import store from "./store/store";
+import App from './App.vue'
+import router from './router' // router가 ./router/index.js를 자동으로 찾아서 연결해줌
+import store from './store/store'
 // import ApiMixin from "./api";
 // .mixin(ApiMixin)
 
-createApp(App).use(store).use(router).mount("#app");
+createApp(App)
+    .use(store)
+    .use(router)
+    .mount('#app')
 
 // window.Kakao.init("e430d78646920375686b1e9b9f9bfd37");
 // window.Kakao.isInitialized();

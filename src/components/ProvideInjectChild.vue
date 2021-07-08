@@ -2,11 +2,11 @@
 
 <script>
 export default {
-    inject: ["itemLength"],
+    inject: ['itemLength'],
     mounted() {
-        console.log(this.itemLength);
-    },
-};
+        console.log(this.itemLength)
+    }
+}
 </script>
 
 <style></style>

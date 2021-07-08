@@ -29,18 +29,18 @@
 </template>
 <script>
 export default {
-    name: "",
+    name: '',
     components: {},
     data() {
         return {
             cities: [],
-            cityArr: ["02", "064", "032"],
+            cityArr: ['02', '064', '032'],
             cityList: [
-                { v: "02", t: "서울" },
-                { v: "064", t: "제주" },
-                { v: "032", t: "부천" },
-            ],
-        };
+                { v: '02', t: '서울' },
+                { v: '064', t: '제주' },
+                { v: '032', t: '부천' }
+            ]
+        }
     },
     setup() {},
     created() {},
@@ -48,10 +48,10 @@ export default {
     unmounted() {},
     methods: {
         getValue() {
-            console.log(this.cities);
-        },
-    },
-};
+            console.log(this.cities)
+        }
+    }
+}
 </script>
 <style scoped>
 label {

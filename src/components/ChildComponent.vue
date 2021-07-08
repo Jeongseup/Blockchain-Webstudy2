@@ -2,7 +2,7 @@
     <div>
         <div>{{ num }}</div>
         <div>{{ isSelected }}</div>
-        <div>{{ arr.join(",") }}</div>
+        <div>{{ arr.join(',') }}</div>
     </div>
 </template>
 <script>
@@ -10,18 +10,18 @@ export default {
     props: {
         num: {
             type: Number,
-            default: 0,
+            default: 0
         },
         isSelected: {
             type: Boolean,
-            default: false,
+            default: false
         },
         arr: {
             type: Array,
-            default: function () {
-                return [];
-            },
-        },
-    },
-};
+            default: function() {
+                return []
+            }
+        }
+    }
+}
 </script>

@@ -6,13 +6,13 @@
 </template>
 <script>
 export default {
-    name: "",
+    name: '',
     components: {},
     data() {
         return {
-            sampleData: "",
-            fullName: "",
-        };
+            sampleData: '',
+            fullName: ''
+        }
     },
     setup() {},
     created() {},
@@ -20,7 +20,7 @@ export default {
     unmounted() {},
     methods: {
         myFunction() {
-            console.log("부모컴포넌트에서 발생시킨 이벤트");
+            console.log('부모컴포넌트에서 발생시킨 이벤트')
         }
     }
 }

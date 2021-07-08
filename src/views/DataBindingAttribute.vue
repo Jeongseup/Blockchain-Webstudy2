@@ -8,19 +8,19 @@
 </template>
 <script>
 export default {
-    name: "",
+    name: '',
     components: {},
     data() {
         return {
-            imgSrc: "https://v3.vuejs.org/logo.png",
-        };
+            imgSrc: 'https://v3.vuejs.org/logo.png'
+        }
     },
     setup() {},
     created() {},
     mounted() {},
     unmounted() {},
-    methods: {},
-};
+    methods: {}
+}
 </script>
 <style scoped>
 img {

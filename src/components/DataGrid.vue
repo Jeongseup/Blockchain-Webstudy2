@@ -19,18 +19,18 @@ export default {
     props: {
         header: {
             type: Array,
-            default: function () {
-                return [];
-            },
+            default: function() {
+                return []
+            }
         },
         body: {
             type: Array,
-            default: function () {
-                return [];
-            },
-        },
-    },
-};
+            default: function() {
+                return []
+            }
+        }
+    }
+}
 </script>
 <style scoped>
 table,

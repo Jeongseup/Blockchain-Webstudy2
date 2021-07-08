@@ -5,12 +5,12 @@
 </template>
 <script>
 export default {
-    name: "",
+    name: '',
     components: {},
     data() {
         return {
-            msg: "자식 컴포넌트에서 보내는 메세지",
-        };
+            msg: '자식 컴포넌트에서 보내는 메세지'
+        }
     },
     setup() {},
     created() {},
@@ -18,8 +18,8 @@ export default {
     unmounted() {},
     methods: {
         sendDataToParent() {
-            this.$emit("send-message", this.msg);
-        },
-    },
-};
+            this.$emit('send-message', this.msg)
+        }
+    }
+}
 </script>

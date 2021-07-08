@@ -8,18 +8,18 @@
 </template>
 <script>
 export default {
-    name: "",
+    name: '',
     components: {},
     data() {
         return {
-            title1: "World",
-            title2: "Jeongseup",
-        };
+            title1: 'World',
+            title2: 'Jeongseup'
+        }
     },
     setup() {},
     created() {},
     mounted() {},
     unmounted() {},
-    methods: {},
-};
+    methods: {}
+}
 </script>
