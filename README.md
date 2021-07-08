@@ -22,3 +22,20 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### etc
+MEMO
+- vue.config.js
+```
+module.exports = {
+    lintOnSave: false,
+    devServer: {
+        proxy: {
+            "/oauth2.0": {
+                target: "https://nid.naver.com",
+            },
+        },
+    },
+};
+
+```
