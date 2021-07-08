@@ -1,5 +1,4 @@
-# vue_study
-asdsdsad
+# my-vue2
 
 ## Project setup
 ```
