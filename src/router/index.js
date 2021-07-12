@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import getList from '../views/getList.vue'
+import Person from '../views/Person.vue'
 // import GoogleLogin from '../views/GoogleLogin.vue'
 
 const routes = [
@@ -7,6 +9,16 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
+    },
+    {
+        path: '/getlist',
+        name: 'getList',
+        component: getList
+    },
+    {
+        path: '/person',
+        name: 'Person',
+        component: Person
     },
     {
         path: '/googlelogin',
