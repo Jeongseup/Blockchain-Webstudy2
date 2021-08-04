@@ -1,0 +1,19 @@
+{
+"eval_status_types": [
+	{
+		"eval_status_id" : 1,
+		"eval_status_name" : "평가지 없음"
+	},
+	{
+		"eval_status_id" : 2,
+		"eval_status_name" : "평가시작 전"
+	},
+	{
+		"eval_status_id" : 3,
+		"eval_status_name" : "평가진행 중"
+	},
+	{
+		"eval_status_id" : 4,
+		"eval_status_name" : "평가 종료"
+	}
+]}

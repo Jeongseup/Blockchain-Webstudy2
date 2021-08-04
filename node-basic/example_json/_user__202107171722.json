@@ -1,0 +1,59 @@
+{
+"user": [
+	{
+		"user_type_id" : 3,
+		"user_email" : "ek@gmail.com",
+		"password" : "1234",
+		"name" : "정은경",
+		"tel" : "01012345678"
+	},
+	{
+		"user_type_id" : 1,
+		"user_email" : "hk@gmail.com",
+		"password" : "1234",
+		"name" : "한경닷컴",
+		"tel" : "0212345678"
+	},
+	{
+		"user_type_id" : 3,
+		"user_email" : "js@gmail.com",
+		"password" : "1234",
+		"name" : "손정습",
+		"tel" : "01012345678"
+	},
+	{
+		"user_type_id" : 3,
+		"user_email" : "mh@gmail.com",
+		"password" : "1234",
+		"name" : "남명혜",
+		"tel" : "01012345678"
+	},
+	{
+		"user_type_id" : 2,
+		"user_email" : "sw@gmail.com",
+		"password" : "1234",
+		"name" : "고승원",
+		"tel" : "01012345678"
+	},
+	{
+		"user_type_id" : 3,
+		"user_email" : "tj@gamil",
+		"password" : "1234",
+		"name" : "장태진",
+		"tel" : "01012345678"
+	},
+	{
+		"user_type_id" : 2,
+		"user_email" : "yh@gmail.com",
+		"password" : "1234",
+		"name" : "류영훈",
+		"tel" : "01012345678"
+	},
+	{
+		"user_type_id" : 2,
+		"user_email" : "yi@gmail.com",
+		"password" : "1234",
+		"name" : "이영인",
+		"tel" : "01012345678"
+	}
+]}
